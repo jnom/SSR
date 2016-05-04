@@ -16,5 +16,9 @@ config(function($stateProvider, $urlRouterProvider) {
         templateUrl: 'app/templates/login.html',
         controller: 'LoginCtrl' 
     })
-    $urlRouterProvider.otherwise('/app/login');
+    .state('app.add', {
+      url: "/add", 
+        templateUrl: 'app/templates/add-inventry.html' 
+    })
+    $urlRouterProvider.otherwise('/app/add');
 });
