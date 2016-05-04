@@ -1,0 +1,58 @@
+<div class="sidebar">
+    <div class="sidebar-navicontainer">
+        <div class="sidebar-headbox">
+            <span class="sidebar-header">Dashboard Menu</span> 
+        </div>
+        <ul class="nav">
+            <li class="selected"><a ui-sref="app.login"><span class="entypo-window"></span>
+                Login</a></li>
+            <li><a><span class="entypo-plus-circled"></span>
+                Master</a></li>
+            <li><a><span class="entypo-pencil"></span>
+                GRN</a></li>
+            <li><a><span class="entypo-window"></span>
+               Material</a></li>
+            <li><a><span class="entypo-window"></span>
+               Material Issue</a></li>
+            
+        </ul>
+    </div>
+
+    <div class="sidebar-navicontainer">
+        <div class="sidebar-headbox">
+            <span class="sidebar-header">Dummy Pages</span> 
+        </div>
+        <ul class="nav">
+            <li class="disabled"><a href="#/view1"><span class="entypo-monitor disabled"></span>
+                Maverix</a></li>
+            <li class=" disabled"><a href="#/view2"><span class="entypo-attention disabled"></span>
+                Warnings  
+            </a></li>
+        </ul>
+    </div>
+ 
+</div>
+
+
+<div class="heading-bar">
+    <!--<div class="user-bar">
+        Hi, Username | <a href="#">Sign out</a>
+    </div>-->
+    <span class="heading-one"><img src="img/iconset-addictive-flavour-set/png/screen_aqua_glossy.png" width="48"
+                                   height="40"> {{title}}</span>
+
+    <div id="top-switch" class="osx-switch" ng-if="showTopToggle">
+        <span class="osx-switch-label osx-switch-label-active">ON</span>
+        <span class="osx-switch-label osx-switch-label-inactive">OFF</span>
+        <label class="switch-light switch-candy" onclick="">
+            <input type="checkbox">
+            <a></a>
+        </label>
+    </div>
+</div>
+
+<div class="content">
+    <div class="container-fluid container-maverix"> 
+    <div ui-view></div>
+    </div>
+</div>
