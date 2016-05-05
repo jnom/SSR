@@ -22,19 +22,18 @@ public class WebService : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public string userLogin(string pUserName, string vPassword)
+    public Auth userLogin(UserDetails UserDetails)
     {
-        string vResult = "";
         DataAccess Ds = new DataAccess();
-        Prop ObjProp = new Prop();
         DataTable dtUserInfo = new DataTable();
-        dtUserInfo = Ds.ExecuteDR("select UserID from User_Master where UserName='" + pUserName.Trim() + "' and Password = '" + vPassword + "' ");
+        Auth auth = new Auth();
+        dtUserInfo = Ds.ExecuteDR("select UserID,UserName from User_Master where UserName='" + UserDetails.userName + "' and Password = '" + UserDetails.password + "' ");
         if (dtUserInfo.Rows.Count > 0)
         {
-            ObjProp.UserID = Convert.ToInt32(dtUserInfo.Rows[0]["UserID"]);
-            ObjProp.UserName = dtUserInfo.Rows[0]["UserName"].ToString();
+            auth.userID = dtUserInfo.Rows[0]["UserID"].ToString();
+            auth.userName = dtUserInfo.Rows[0]["UserName"].ToString();
         }
-        return vResult;
+        return auth;
     }
 
 }

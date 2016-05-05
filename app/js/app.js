@@ -3,7 +3,7 @@
 
 // Declare app level module which depends on filters, and services
 angular.module('myApp', ['ui.router', 'myApp.services', 'myApp.controllers']). 
-config(function($stateProvider, $urlRouterProvider) {  
+config(function($stateProvider, $urlRouterProvider, $httpProvider) {  
    $stateProvider
     .state('app', {
       url: "/app",
@@ -21,4 +21,6 @@ config(function($stateProvider, $urlRouterProvider) {
         templateUrl: 'app/templates/add-inventry.html' 
     })
     $urlRouterProvider.otherwise('/app/add');
+
+    $httpProvider.interceptors.push('httpInterceptor');
 });
