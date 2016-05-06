@@ -35,5 +35,11 @@ public class WebService : System.Web.Services.WebService
         }
         return auth;
     }
+    [WebMethod]
+    public int saveGrnHeader(saveGrn objGrn)
+    {
+
+        return 0;
+    }
 
 }
