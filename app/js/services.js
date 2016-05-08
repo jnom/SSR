@@ -33,32 +33,18 @@ angular.module('myApp.services', [])
         };
         return LSAPI;
 }])
-.factory('httpInterceptor', function ($q, $rootScope, $log) {
-    var numLoadings = 0;
+.factory('Loader', function ($rootScope) { 
     return {
-        request: function (config) {
-            numLoadings++;
-            // Show loader
-            $rootScope.$broadcast("loader_show");
-            return config || $q.when(config)
+        show: function () { 
+            $rootScope.$broadcast("loader_show"); 
         },
-        response: function (response) {
-            if ((--numLoadings) === 0) {
-                // Hide loader
+        hide: function () {
                 $rootScope.$broadcast("loader_hide");
-            }
-            return response || $q.when(response);
-        },
-        responseError: function (response) {
-            if (!(--numLoadings)) {
-                // Hide loader
-                $rootScope.$broadcast("loader_hide");
-            }
-            return $q.reject(response);
         }
+         
     };
 })
-.directive("loader", function ($rootScope) {
+.directive("loaderHtml", function ($rootScope) {
     return function ($scope, element, attrs) {
         $scope.$on("loader_show", function () {
             return element.show();

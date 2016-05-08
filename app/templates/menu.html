@@ -1,4 +1,4 @@
-<div id="loaderDiv" loader style="display: none;">
+<div id="loaderDiv" loader-html style="display: none;">
     <div id="loader"></div>
 </div>
 <div class="sidebar">
@@ -6,30 +6,37 @@
         <div class="sidebar-headbox">
             <span class="sidebar-header">Dashboard Menu</span> 
         </div>
-        <ul class="nav">
-            <li class="selected"><a ui-sref="app.login"><span class="entypo-window"></span>
-                Login</a></li>
-            <li><a><span class="entypo-plus-circled"></span>
-                Master</a></li>
-            <li><a><span class="entypo-pencil"></span>
-                GRN</a></li>
-            <li><a><span class="entypo-window"></span>
-               Material</a></li>
-            <li><a><span class="entypo-window"></span>
+        <ul class="nav"> 
+            <li ui-sref-active='selected'><a><span class="entypo-plus-circled disabled"></span>
+                Item Master</a></li>
+            <li ui-sref-active='selected'><a ui-sref="app.add"><span class="entypo-pencil"></span>
+                NIR</a></li>
+            <li ui-sref-active='selected'><a ui-sref="app.grn-view"><span class="entypo-pencil"></span>
+                NIR View</a></li>
+            <li ui-sref-active='selected'><a ui-sref="app.material-request"><span class="entypo-window"></span>
+               Material  Requisition</a></li>
+            <li ui-sref-active='selected'><a><span class="entypo-window"></span>
+               MR View</a></li>
+            <li ui-sref-active='selected'><a><span class="entypo-window"></span>
                Material Issue</a></li>
+            <li ui-sref-active='selected'><a><span class="entypo-window"></span>
+               Material View</a></li>
             
         </ul>
     </div>
 
     <div class="sidebar-navicontainer">
         <div class="sidebar-headbox">
-            <span class="sidebar-header">Dummy Pages</span> 
+            <span class="sidebar-header">Advance Menu</span> 
         </div>
         <ul class="nav">
             <li class="disabled"><a href="#/view1"><span class="entypo-monitor disabled"></span>
-                Maverix</a></li>
+                Purchases Order</a></li>
             <li class=" disabled"><a href="#/view2"><span class="entypo-attention disabled"></span>
-                Warnings  
+                Internal Transfer   
+            </a></li>
+            <li class=" disabled"><a href="#/view2"><span class="entypo-attention disabled"></span>
+                Inventory Ledger   
             </a></li>
         </ul>
     </div>
@@ -38,20 +45,13 @@
 
 
 <div class="heading-bar">
-    <!--<div class="user-bar">
-        Hi, Username | <a href="#">Sign out</a>
-    </div>-->
-    <span class="heading-one"><img src="img/iconset-addictive-flavour-set/png/screen_aqua_glossy.png" width="48"
+    <div class="user-bar">
+        Hi, Swapnil Patwa | <a href="">Sign out</a>
+    </div>
+    <span class="heading-one"><img src="app/img/agro-logo.png" width="48"
                                    height="40"> {{title}}</span>
 
-    <div id="top-switch" class="osx-switch" ng-if="showTopToggle">
-        <span class="osx-switch-label osx-switch-label-active">ON</span>
-        <span class="osx-switch-label osx-switch-label-inactive">OFF</span>
-        <label class="switch-light switch-candy" onclick="">
-            <input type="checkbox">
-            <a></a>
-        </label>
-    </div>
+ 
 </div>
 
 <div class="content">

@@ -18,9 +18,17 @@ config(function($stateProvider, $urlRouterProvider, $httpProvider) {
     })
     .state('app.add', {
       url: "/add", 
-        templateUrl: 'app/templates/add-inventry.html' 
+        templateUrl: 'app/templates/add-inventry.html',
+        controller: 'AddNirCtrl' 
     })
-    $urlRouterProvider.otherwise('/app/add');
-
-    $httpProvider.interceptors.push('httpInterceptor');
+    .state('app.grn-view', {
+      url: "/grn-view", 
+        templateUrl: 'app/templates/grn-view.html',
+        controller: 'GrnViewCtrl' 
+    })
+    .state('app.material-request', {
+      url: "/material-request", 
+        templateUrl: 'app/templates/material-request.html' 
+    })
+    $urlRouterProvider.otherwise('/app/add'); 
 });

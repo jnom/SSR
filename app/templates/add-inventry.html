@@ -1,98 +1,271 @@
 <div class="sub-nav">
     <ul ng-init="$parent.subNav1 = 0">
-        <li ng-class="{selected : $parent.subNav1 === 0}"><a href="" ng-click="$parent.subNav1 = 0">Overview</a></li>
-        <li ng-class="{selected : $parent.subNav1 === 1}"><a href="" ng-click="$parent.subNav1 = 1">Settings</a></li> 
+        <li ng-class="{selected : $parent.subNav1 === 0}"><a href="" ng-click="$parent.subNav1 = 0">Item Information</a></li>
+        <li ng-class="{selected : $parent.subNav1 === 1}"><a href="" ng-click="$parent.subNav1 = 1">Add Items</a></li>
     </ul>
 </div>
-
 <div class="sub-nav-content-container">
-    <div ng-show="$parent.subNav1 === 0">
+    <div class="col-md-12">
+        <form role="form" class="inventry">
+            <div ng-show="$parent.subNav1 === 0">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Company*:</label>
+                        <select class="">
+                            <option value="">Select Option</option>
+                            <option>Option B</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Store*:</label>
+                        <select class="">
+                            <option value="">Select Option</option>
+                            <option>Option B</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="nir">NIR*:</label>
+                        <input type="text" class="form-control" id="nir" placeholder="NIR" disabled="disabled">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="nirdate">NIR Date*:</label>
+                        <span class="input-group date">
+                <input type="date" class="form-control" id="nirdate" placeholder="NIR">
 
-        <h2>Access</h2>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="supplier">Supplier*</label>
+                        <select class="" id="supplier">
+                            <option value="">Select Option</option>
+                            <option>Option B</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="trasporter">Trasporter*</label>
+                        <select class="" id="trasporter">
+                            <option value="">Select Option</option>
+                            <option>Option B</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="clear-fix"></div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="driver">Driver Name*:</label>
+                        <input type="text" class="form-control" id="driver" placeholder="Driver Name">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="drivercontact">Driver Contact*:</label>
+                        <input type="text" class="form-control" id="drivercontact" placeholder="Driver Contact">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="truk">Vehicle Number*:</label>
+                        <input type="text" class="form-control" id="truk" placeholder="Vehicle Number">
+                    </div>
+                </div>
+                <div class="clear-fix"></div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="vehicle">Vehicle Entery Date*:</label>
+                        <span class="input-group date">
+                <input type="date" class="form-control" id="vehicle" placeholder="Vehicle Entery Date">  
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="challan">Challan Number*:</label>
+                        <input type="text" class="form-control" id="challan" placeholder="Chalan Number">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="chllandate">Challan Date*:</label>
+                        <span class="input-group date"> 
+                <input type="date" class="form-control" id="chllandate" placeholder="Challan Date">
 
-             <div class="col-md-12">
-        <form role="form">
-            <div class="form-group">
-                <label for="exampleInputName1">Email address</label>
-                <input type="text" class="form-control" id="exampleInputName1" placeholder="Enter Your Name">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                        </span>
+                    </div>
+                </div>
+                <div class="clear-fix"></div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="invoce">Invoice Number*:</label>
+                        <input type="text" class="form-control" id="invoce" placeholder="Invoice Number">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="invocedate">Invoice Date*:</label>
+                        <span class="input-group date"> 
+                <input type="date" class="form-control" id="invocedate" placeholder="Invoice Date">
+
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="gatere">Gate Register*:</label>
+                        <input type="text" class="form-control" id="gatere" placeholder="Gate Register">
+                    </div>
+                </div>
+                <div class="clear-fix"></div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="gatedate">Gate Register Date*:</label>
+                        <span class="input-group date"> 
+                <input type="date" class="form-control" id="gatedate" placeholder="Gate Register Date">
+
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                        </span>
+                    </div>
+                </div>
+                <div class="clear-fix"></div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="remark">Remark</label>
+                        <br>
+                        <textarea cols="50" id="remark" rows="7" placeholder="Enter remark here." class="no-shadow"></textarea>
+                    </div>
+                </div>
+                <div class="clear-fix"></div>
+
+                    <div class="form-group pull-right">
+                        <button class="button large blue">Next</button>
+                    </div>
             </div>
+            <div ng-show="$parent.subNav1 === 1">
+                <h2>Content</h2>
 
-            <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                <table class="ssr-table table table-bordered table-striped table-responsive">
+    <thead>
+        <tr  class="table-heading">
+            <th>
+               Sr. No.
+            </th>
+            <th>
+                Item Name
+            </th>
+            <th>
+                Item Code
+            </th>
+            <th>
+                Discount (%)
+            </th>
+            <th>
+                Recive Qty
+            </th>
+            <th>
+                Rate
+            </th>
+            <th>
+                Total Price
+            </th>
+            <th>
+                Store Stock
+            </th>
+            <th>
+                Remark
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                1
+            </td>
+            <td>
+                100 GM B
+            </td>
+            <td>
+                00119
+            </td>
+            <td>
+                10
+            </td>
+            <td>
+                100
+            </td>
+            <td>
+                10
+            </td>
+            <td>
+                100000
+            </td>
+            <td>
+                5000
+            </td>
+            <td>
+                Place on dry place
+            </td>
+        </tr>
+        <tr>
+            <td>
+              2
+            </td>
+            <td>
+              <input type="text" class="form-control">
+            </td>
+            <td>
+              <input type="text" class="form-control">
+            </td>
+            <td>
+              <input type="text" class="form-control">
+            </td>
+            <td>
+              <input type="text" class="form-control">
+            </td>
+            <td>
+              <input type="text" class="form-control">
+            </td>
+            <td>
+              533
+            </td>
+            <td>
+               334
+            </td>
+            <td>
+              <input type="text" class="form-control">
+              
+            </td>
+        </tr>
+    </tbody>
+</table>
+              <div class="pull-right">
+            <button class="button large blue">Save</button>
+            <button class="button large ">Cancle</button>
+            <button class="button large ">Delete</button>
+        </div> 
             </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputFile">File input</label>
-                <input type="file" id="exampleInputFile">
-
-                <p class="help-block">Example block-level help text here.</p>
-            </div>
-            <div class="form-group">
-                <label>Textarea</label><br>
-                <textarea cols="50" rows="10"></textarea>
-
-                <p class="help-block">Example block-level help text here.</p>
-            </div>
-            <div class="form-group">
-                <label>Default Select:</label>
-                <select>
-                    <option>Option A</option>
-                    <option>Option B</option>
-                </select>
-
-                <p class="help-block">This is the default Select.</p>
-            </div>
-            <div class="form-group">
-                <label>Large Select:</label>
-                <select class="select-large">
-                    <option>Option A</option>
-                    <option>Option B</option>
-                </select>
-
-                <p class="help-block">This Select Style modifies the Default Select and makes it larger (Looks on Webkit).</p>
-            </div>
-
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox"> Check me out
-                </label>
-            </div>
-            <input type="submit" class="button large blue " value="Submit"/>
-
         </form>
     </div>
-
-    </div>
-
-
-    <div ng-show="$parent.subNav1 === 1">
-        <h2>Settings</h2>
-
-        <ul class="list-unstyled indent">
-            <li>
-                <input type="checkbox"> Allow Remote Access via SSH for
-                <select>
-                    <option>Administrators</option>
-                    <option>All Users</option>
-                </select>
-            </li>
-            <li>
-                <input type="checkbox"> Activate Screen Sharing and Remote Access
-            </li>
-            <li>
-                <input type="checkbox"> Allow Remote Administration through Server
-            </li>
-            <li>
-                <input type="checkbox"> Allow Push Notifications
-            </li>
-        </ul>
-
-    </div>
-
-    
 </div>
-

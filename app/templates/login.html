@@ -9,17 +9,18 @@
             <div class="modal-body">
               <form  class="login-form" ng-submit="authenticateUser(auth)" name="loginForm"> 
             <div class="form-group"> 
-                <input type="email" class="form-control text-input"  ng-model="auth.userName"  placeholder="Username">
+                <input type="email" class="form-control text-input" ng-required="true" ng-model="auth.userName"  placeholder="Username">
             </div>
             <div class="form-group"> 
-                <input type="password" class="form-control text-input"    ng-model="auth.password"   placeholder="Password"> 
+                <input type="password" class="form-control text-input" ng-required="true" ng-model="auth.password"   placeholder="Password"> 
             </div>
             <div class="form-group">
-                 <input type="submit" value="Submit" class="button large blue action-btn" />
+                 <input type="submit" value="Submit" ng-class="loginForm.$invalid ? 'disabled-btn' : ''" ng-disabled="loginForm.$invalid" class="button large blue action-btn" />
             </div>
         </form>
             </div>
             <span class="error" ng-if="errorLogin">Incorrect username or password</span>
+            <span class="error" ng-if="errorServer">Unable to access server</span>
         </div>
         <div class="modal-footer footer-modal">
            Copyright © 2016 <a href="http://jnom.in" class="link-btn" target="_blank">Jnom</a>. All rights reserved. 
