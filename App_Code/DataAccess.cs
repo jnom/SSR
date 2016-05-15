@@ -100,36 +100,61 @@ public class DataAccess
         }
         return dt;
     }
+    public DataTable getStoreItem(int pStoreID)
+    {
+        DataTable dt = new DataTable();
+        SqlDataReader reader;
+        try
+        {
+            objcmd.Parameters.AddWithValue("storeID", pStoreID);
+            objcmd.CommandText = "getItemByStore";
+            reader = objcmdT.ExecuteReader();
+            dt.Load(reader);
+        }
+        catch (Exception ex)
+        {
+            message = ex.Message;
+        }
+        finally
+        {
+            if (objcon.State == ConnectionState.Open) objcon.Close();
+        }
+        return dt;
+    }
 
-    public int insertFeedback(saveGrn objGRN)
+    public int SaveGrn(saveGrn objGRN, DataTable dt)
     {
         try
         {
             int vRetu;
+            DataSet ds = new DataSet();
+            ds.Tables.Add(dt);
             if (objcon.State == ConnectionState.Closed) objcon.Open();
-            objcmd.Parameters.AddWithValue("", objGRN.GRNID);
-            objcmd.Parameters.AddWithValue("", objGRN.GRNNO);
-            objcmd.Parameters.AddWithValue("", objGRN.comapnyID);
-            objcmd.Parameters.AddWithValue("", objGRN.storeID);
-            objcmd.Parameters.AddWithValue("", objGRN.supplierID);
-            objcmd.Parameters.AddWithValue("", objGRN.transpoterID);
-            objcmd.Parameters.AddWithValue("", objGRN.vehicleNo);
-            objcmd.Parameters.AddWithValue("", objGRN.vehicleEntryNo);
-            objcmd.Parameters.AddWithValue("", objGRN.vehicleEntryDate);
-            objcmd.Parameters.AddWithValue("", objGRN.status);
-            objcmd.Parameters.AddWithValue("", objGRN.Remark);
-            objcmd.Parameters.AddWithValue("", objGRN.invoiceNo);
-            objcmd.Parameters.AddWithValue("", objGRN.invoiceDate);
-            objcmd.Parameters.AddWithValue("", objGRN.gatePassNo);
-            objcmd.Parameters.AddWithValue("", objGRN.gatePassDate);
-            objcmd.Parameters.AddWithValue("", objGRN.DriverName);
-            objcmd.Parameters.AddWithValue("", objGRN.DriverContactNo);
-            objcmd.Parameters.AddWithValue("", objGRN.createdDate);
-            objcmd.Parameters.AddWithValue("", objGRN.createdBy);
-            objcmd.Parameters.AddWithValue("", objGRN.challanNo);
-            objcmd.Parameters.AddWithValue("", objGRN.challanDate);
-            objcmd.Parameters.AddWithValue("", objGRN.approvalDate);
-            objcmd.Parameters.AddWithValue("", objGRN.approvalBy);
+            objcmd.Parameters.AddWithValue("@GRNID", objGRN.GRNID);
+            objcmd.Parameters.AddWithValue("@GRNNO", objGRN.GRNNO);
+            objcmd.Parameters.AddWithValue("@comapnyID", objGRN.comapnyID);
+            objcmd.Parameters.AddWithValue("@storeID", objGRN.storeID);
+            objcmd.Parameters.AddWithValue("@supplierID", objGRN.supplierID);
+            objcmd.Parameters.AddWithValue("@transpoterID", objGRN.transpoterID);
+            objcmd.Parameters.AddWithValue("@vehicleNo", objGRN.vehicleNo);
+            objcmd.Parameters.AddWithValue("@vehicleEntryNo", objGRN.vehicleEntryNo);
+            objcmd.Parameters.AddWithValue("@vehicleEntryDate", objGRN.vehicleEntryDate);
+            objcmd.Parameters.AddWithValue("@status", objGRN.status);
+            objcmd.Parameters.AddWithValue("@Remark", objGRN.Remark);
+            objcmd.Parameters.AddWithValue("@invoiceNo", objGRN.invoiceNo);
+            objcmd.Parameters.AddWithValue("@invoiceDate", objGRN.invoiceDate);
+            objcmd.Parameters.AddWithValue("@gatePassNo", objGRN.gatePassNo);
+            objcmd.Parameters.AddWithValue("@gatePassDate", objGRN.gatePassDate);
+            objcmd.Parameters.AddWithValue("@DriverName", objGRN.DriverName);
+            objcmd.Parameters.AddWithValue("@DriverContactNo", objGRN.DriverContactNo);
+            objcmd.Parameters.AddWithValue("@createdDate", objGRN.createdDate);
+            objcmd.Parameters.AddWithValue("@createdBy", objGRN.createdBy);
+            objcmd.Parameters.AddWithValue("@challanNo", objGRN.challanNo);
+            objcmd.Parameters.AddWithValue("@challanDate", objGRN.challanDate);
+            objcmd.Parameters.AddWithValue("@approvalDate", objGRN.approvalDate);
+            objcmd.Parameters.AddWithValue("@approvalBy", objGRN.approvalBy);
+            objcmd.Parameters.AddWithValue("@childXml", ds.GetXml());
+            objcmd.Parameters.AddWithValue("@tblName", ds.DataSetName + "/" + ds.Tables[0].TableName);
             objcmd.CommandText = "ProcFeedBack";
             vRetu = objcmd.ExecuteNonQuery();
             if (objcon.State == ConnectionState.Open) objcon.Close();

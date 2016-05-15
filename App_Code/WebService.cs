@@ -35,11 +35,33 @@ public class WebService : System.Web.Services.WebService
         }
         return auth;
     }
-    [WebMethod]
-    public int saveGrnHeader(saveGrn objGrn)
+
+
+    [WebMethod(enableSession: true)]
+    public GetStoreItem getItemDetails(string pStoreID, string vStrWork)
     {
-
-        return 0;
+        GetStoreItem obj = new GetStoreItem();
+        if (Session["dtStoreItem"] == null || Session["storeID"] != null || Session["storeID"].ToString() != vStrWork)
+        {
+            DataTable dtdtStoreItem = new DataTable();
+            DataAccess objds = new DataAccess();
+            dtdtStoreItem = objds.getStoreItem(Convert.ToInt32(vStrWork));
+            Session["dtStoreItem"] = dtdtStoreItem;
+        }
+        DataTable dt = Session["dtStoreItem"] as DataTable;
+        DataView dView = dt.DefaultView;
+        dView.RowFilter = " where ourName like '%" + vStrWork + "%'";
+        foreach (DataRow dRows in dView.Table.Rows)
+        {
+            obj.currentStock = Convert.ToDecimal(dRows["currentStock"]);
+            obj.ItemID = Convert.ToInt32(dRows["ItemID"]);
+            obj.itemName = dRows["itemName"].ToString();
+            obj.lastPORate = Convert.ToDecimal(dRows["lastPORate"]);
+            obj.minReqQty = Convert.ToDecimal(dRows["minReqQty"]);
+            obj.ourName = dRows["ourName"].ToString();
+            obj.uom = dRows["uom"].ToString();
+            obj.uomID = Convert.ToInt32(dRows["uomID"]);
+        }
+        return obj;
     }
-
 }
