@@ -63,13 +63,17 @@ angular.module('myApp.controllers', [])
           $scope.itemsArray.splice(index, 1);
         }
          jQuery( "#city" ).autocomplete({
+          var tableName;
+          if(jQuery(this).hasClass('ourCode')) tableName = 'ourCode'
+          else tableName = 'ourName' 
       source: function( request, response ) {
         jQuery.ajax({
           type: "POST",
           url: "WebService.asmx/getItemDetails", 
           data: {
             pStoreID: '2',
-            vStrWork: request.term
+            vStrWork: request.term,
+            tableName: tableName
           },
           dataType: "json",
           success: function (data) {
@@ -86,7 +90,9 @@ angular.module('myApp.controllers', [])
       }, 
       select: function(event, ui) {
         // alert( ui.item ? "Selected: " + ui.item.ourName :  "Nothing selected, input was " + this.value);
-        console.log(ui);
+        console.log(ui); 
+        $scope.newItem = {itemID: ui.item.itemID, uomID: ui.item.uomID, disPer: ui.item.disPer, acceptedQty: ui.item.acceptedQty, rate: ui.item.rate, totalPrice: ui.item.totalPrice, remarks: ui.item.remarks}
+        console.log($scope.newItem);
       }
     })
           .autocomplete( "instance" )._renderItem = function( ul, item ) {
