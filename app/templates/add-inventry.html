@@ -165,10 +165,10 @@
                Sr. No.
             </th>
             <th>
-                Item Name
+                Our Name
             </th>
             <th>
-                Item Code
+                Our Code
             </th>
             <th>
                 Discount (%)
@@ -235,16 +235,16 @@
               {{itemsArray.length+1}}
             </td>
             <td>
-              <input type="text" class="form-control" id="city" ng-model="newItem.OurName">
+              <input type="text" class="form-control ourName" id="ourName" ng-model="newItem.itemID">
             </td>
             <td>
-              <input type="text" class="form-control" ng-model="newItem.uomID">
+              <input type="text" class="form-control ourCode" id="ourCode" ng-model="newItem.uomID">
             </td>
             <td>
-              <input type="text" class="form-control" ng-model="newItem.DisPer">
+              <input type="text" class="form-control" ng-model="newItem.disPer">
             </td>
             <td>
-              <input type="text" class="form-control" ng-model="newItem.AcceptedQty">
+              <input type="text" class="form-control" ng-model="newItem.acceptedQty">
             </td>
             <td>
               <input type="text" class="form-control" ng-model="newItem.rate">
@@ -253,14 +253,14 @@
               {{getDiscountedPrice(newItem.rate, newItem.AcceptedQty, newItem.DisPer)}}
             </td>
             <td>
-               {{newItem.storeStock || 120}}
+               {{newItem.currentStock || 0}}
             </td>
             <td>
-              <input type="text" class="form-control" ng-model="newItem.remark">
+              <input type="text" class="form-control" ng-model="newItem.remarks">
               
             </td>
             <td>
-              <input type="button" value="Add" ng-disabled="!newItem.OurName || !newItem.uomID || !newItem.DisPer || !newItem.AcceptedQty || !newItem.rate" ng-click="addItem(newItem)" class="button">
+              <input type="button" value="Add" ng-disabled="!newItem.ourName || !newItem.uomID || !newItem.disPer || !newItem.acceptedQty || !newItem.rate" ng-click="addItem(newItem)" class="button">
               
             </td>
         </tr>
