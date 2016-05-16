@@ -42,6 +42,7 @@ public class saveGrn
     public DateTime createdDate;
     public DateTime approvalDate;
     public DateTime vehicleEntryDate;
+    public DateTime GRNDate; 
 }
 public class GetStoreItem
 {
@@ -57,11 +58,10 @@ public class GetStoreItem
 public class grnDetails
 {
     public int ItemID;
-    public string ourName;
-    public string itemName;
-    public string uom;
     public int uomID;
-    public decimal currentStock;
-    public decimal lastPORate;
-    public decimal minReqQty;
+    public decimal DisPer;
+    public decimal AcceptedQty;
+    public decimal rate;
+    public decimal TotalPrice;
+    public string Remarks;
 }

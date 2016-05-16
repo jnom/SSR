@@ -76,6 +76,7 @@ public class DataAccess
         }
         finally
         {
+            objcmd.Dispose();
             if (objcon.State == ConnectionState.Open) objcon.Close();
         }
     }
@@ -96,6 +97,7 @@ public class DataAccess
         }
         finally
         {
+            objcmd.Dispose();
             if (objcon.State == ConnectionState.Open) objcon.Close();
         }
         return dt;
@@ -106,9 +108,11 @@ public class DataAccess
         SqlDataReader reader;
         try
         {
+            objcon.Close();
+            if (objcon.State == ConnectionState.Closed) objcon.Open();
             objcmd.Parameters.AddWithValue("storeID", pStoreID);
-            objcmd.CommandText = "getItemByStore";
-            reader = objcmdT.ExecuteReader();
+            objcmd.CommandText = "SSR_Get_Item_by_Store";
+            reader = objcmd.ExecuteReader();
             dt.Load(reader);
         }
         catch (Exception ex)
@@ -117,28 +121,25 @@ public class DataAccess
         }
         finally
         {
+            objcmd.Dispose();
             if (objcon.State == ConnectionState.Open) objcon.Close();
+            objcon.Dispose();
         }
         return dt;
     }
 
-    public int SaveGrn(saveGrn objGRN, DataTable dt)
+    public int SaveGrn(saveGrn objGRN, string childXml)
     {
         try
         {
             int vRetu;
-            DataSet ds = new DataSet();
-            ds.Tables.Add(dt);
             if (objcon.State == ConnectionState.Closed) objcon.Open();
-            objcmd.Parameters.AddWithValue("@GRNID", objGRN.GRNID);
-            objcmd.Parameters.AddWithValue("@GRNNO", objGRN.GRNNO);
+            objcmd.Parameters.AddWithValue("@GRNDate", objGRN.GRNDate);
             objcmd.Parameters.AddWithValue("@comapnyID", objGRN.comapnyID);
             objcmd.Parameters.AddWithValue("@storeID", objGRN.storeID);
             objcmd.Parameters.AddWithValue("@supplierID", objGRN.supplierID);
             objcmd.Parameters.AddWithValue("@transpoterID", objGRN.transpoterID);
             objcmd.Parameters.AddWithValue("@vehicleNo", objGRN.vehicleNo);
-            objcmd.Parameters.AddWithValue("@vehicleEntryNo", objGRN.vehicleEntryNo);
-            objcmd.Parameters.AddWithValue("@vehicleEntryDate", objGRN.vehicleEntryDate);
             objcmd.Parameters.AddWithValue("@status", objGRN.status);
             objcmd.Parameters.AddWithValue("@Remark", objGRN.Remark);
             objcmd.Parameters.AddWithValue("@invoiceNo", objGRN.invoiceNo);
@@ -147,21 +148,19 @@ public class DataAccess
             objcmd.Parameters.AddWithValue("@gatePassDate", objGRN.gatePassDate);
             objcmd.Parameters.AddWithValue("@DriverName", objGRN.DriverName);
             objcmd.Parameters.AddWithValue("@DriverContactNo", objGRN.DriverContactNo);
-            objcmd.Parameters.AddWithValue("@createdDate", objGRN.createdDate);
             objcmd.Parameters.AddWithValue("@createdBy", objGRN.createdBy);
             objcmd.Parameters.AddWithValue("@challanNo", objGRN.challanNo);
             objcmd.Parameters.AddWithValue("@challanDate", objGRN.challanDate);
-            objcmd.Parameters.AddWithValue("@approvalDate", objGRN.approvalDate);
             objcmd.Parameters.AddWithValue("@approvalBy", objGRN.approvalBy);
-            objcmd.Parameters.AddWithValue("@childXml", ds.GetXml());
-            objcmd.Parameters.AddWithValue("@tblName", ds.DataSetName + "/" + ds.Tables[0].TableName);
-            objcmd.CommandText = "ProcFeedBack";
+            objcmd.Parameters.AddWithValue("@childXml", childXml);
+            objcmd.CommandText = "SSR_Save_Record_IN_GRN";
             vRetu = objcmd.ExecuteNonQuery();
             if (objcon.State == ConnectionState.Open) objcon.Close();
             return vRetu;
         }
         catch (Exception)
         {
+            objcmd.Dispose();
             if (objcon.State == ConnectionState.Open) objcon.Close();
             return 0;
         }

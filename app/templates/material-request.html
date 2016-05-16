@@ -3,23 +3,24 @@
 </div>
 <div class="sub-nav-content-container">
     <div class="col-md-12">
-        <form role="form" class="inventry">
+        <form role="form" class="inventry" ng-submit="saveNIR(materialDetail)">
             <div >
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Company*:</label>
-                        <select class="">
+                        <select class="" ng-model="materialDetail.companyID">
                             <option value="">Select Option</option>
-                            <option>Option B</option>
+                            <option value="1">Agro</option>
                         </select>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Store*:</label>
-                        <select class="">
+                        <select class="" ng-model="materialDetail.storeID">
                             <option value="">Select Option</option>
-                            <option>Option B</option>
+                            <option value="1">Magazia01 </option>
+                            <option value="2">Magazia02 </option>
                         </select>
                     </div>
                 </div>

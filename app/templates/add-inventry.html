@@ -1,42 +1,45 @@
+<div name="nirform" ng-form>
 <div class="sub-nav">
     <ul ng-init="$parent.subNav1 = 0">
         <li ng-class="{selected : $parent.subNav1 === 0}"><a href="" ng-click="$parent.subNav1 = 0">Item Information</a></li>
-        <li ng-class="{selected : $parent.subNav1 === 1}"><a href="" ng-click="$parent.subNav1 = 1">Add Items</a></li>
+        <li ng-class="{selected : $parent.subNav1 === 1}"><a href="" ng-click="$parent.subNav1 = 1" >Add Items</a></li>
+        <!-- ng-class="nirform.$invalid ? 'disabled-a' : ''" -->
     </ul>
 </div>
 <div class="sub-nav-content-container">
     <div class="col-md-12">
-        <form role="form" class="inventry">
+        <form role="form" class="inventry"  ng-submit="saveNIR(materialDetail)">
             <div ng-show="$parent.subNav1 === 0">
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Company*:</label>
-                        <select class="">
+                        <select class="" name="company" required ng-model="materialDetail.company">
                             <option value="">Select Option</option>
-                            <option>Option B</option>
+                            <option value="1">Agro</option> 
                         </select>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Store*:</label>
-                        <select class="">
+                          <select class=""  name="store" required ng-model="materialDetail.storeID">
                             <option value="">Select Option</option>
-                            <option>Option B</option>
+                            <option value="1">Magazia01 </option>
+                            <option value="2">Magazia02 </option>
                         </select>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="nir">NIR*:</label>
-                        <input type="text" class="form-control" id="nir" placeholder="NIR" disabled="disabled">
+                        <input type="text" class="form-control" name="nir" id="nir" ng-model="materialDetail.GRNID" placeholder="NIR" disabled="disabled">
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="nirdate">NIR Date*:</label>
                         <span class="input-group date">
-                <input type="date" class="form-control" id="nirdate" placeholder="NIR">
+                <input type="date"  ng-model="materialDetail.GRNDate" name="nirDate" required class="form-control" id="nirdate" placeholder="NIR">
 
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
@@ -47,18 +50,18 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="supplier">Supplier*</label>
-                        <select class="" id="supplier">
+                        <select  ng-model="materialDetail.supplierID" name="supplier" required class="" id="supplier">
                             <option value="">Select Option</option>
-                            <option>Option B</option>
+                            <option value="1">Test SUpplier</option>
                         </select>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="trasporter">Trasporter*</label>
-                        <select class="" id="trasporter">
+                        <select class=""  ng-model="materialDetail.transporterID" name="trasportet" required id="trasporter">
                             <option value="">Select Option</option>
-                            <option>Option B</option>
+                            <option value="2">Trasporter 1</option>
                         </select>
                     </div>
                 </div>
@@ -66,44 +69,33 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="driver">Driver Name*:</label>
-                        <input type="text" class="form-control" id="driver" placeholder="Driver Name">
+                        <input type="text" name="driver" required ng-model="materialDetail.driverName" class="form-control" id="driver" placeholder="Driver Name">
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="drivercontact">Driver Contact*:</label>
-                        <input type="text" class="form-control" id="drivercontact" placeholder="Driver Contact">
+                        <input type="text" class="form-control" name="driverContact" required id="drivercontact" ng-model="materialDetail.driverContactNo" placeholder="Driver Contact">
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="truk">Vehicle Number*:</label>
-                        <input type="text" class="form-control" id="truk" placeholder="Vehicle Number">
+                        <input type="text" class="form-control" name="vehiclenumber" required id="truk" ng-model="materialDetail.vehicleNo" placeholder="Vehicle Number">
                     </div>
                 </div>
-                <div class="clear-fix"></div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label for="vehicle">Vehicle Entery Date*:</label>
-                        <span class="input-group date">
-                <input type="date" class="form-control" id="vehicle" placeholder="Vehicle Entery Date">  
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                        </span>
-                        </span>
-                    </div>
-                </div>
+                <div class="clear-fix"></div> 
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="challan">Challan Number*:</label>
-                        <input type="text" class="form-control" id="challan" placeholder="Chalan Number">
+                        <input type="text" ng-model="materialDetail.challanNo" name="challannumber" required class="form-control" id="challan" placeholder="Chalan Number">
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="chllandate">Challan Date*:</label>
                         <span class="input-group date"> 
-                <input type="date" class="form-control" id="chllandate" placeholder="Challan Date">
+                <input type="date" ng-model="materialDetail.challanDate" class="form-control" name="challandate" required id="chllandate" placeholder="Challan Date">
 
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
@@ -111,18 +103,19 @@
                         </span>
                     </div>
                 </div>
-                <div class="clear-fix"></div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="invoce">Invoice Number*:</label>
-                        <input type="text" class="form-control" id="invoce" placeholder="Invoice Number">
+                        <input type="text" class="form-control" id="invoce" name="invoce" required ng-model="materialDetail.invoiceNo" placeholder="Invoice Number">
                     </div>
                 </div>
+                <div class="clear-fix"></div>
+
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="invocedate">Invoice Date*:</label>
                         <span class="input-group date"> 
-                <input type="date" class="form-control" id="invocedate" placeholder="Invoice Date">
+                <input type="date" class="form-control" id="invocedate" name="invocedate" required ng-model="materialDetail.invoiceDate" placeholder="Invoice Date">
 
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
@@ -132,16 +125,15 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label for="gatere">Gate Register*:</label>
-                        <input type="text" class="form-control" id="gatere" placeholder="Gate Register">
+                        <label for="gatere">Gate Pass No*:</label>
+                        <input type="text" class="form-control" id="gatere" name="gatere" required ng-model="materialDetail.gatePassNo" placeholder="Gate Pass No">
                     </div>
                 </div>
-                <div class="clear-fix"></div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label for="gatedate">Gate Register Date*:</label>
+                        <label for="gatedate">Gate Pass Date*:</label>
                         <span class="input-group date"> 
-                <input type="date" class="form-control" id="gatedate" placeholder="Gate Register Date">
+                <input type="date" ng-model="materialDetail.gatePassDate" name="gatePassDate" required class="form-control" id="gatedate" placeholder="Gate Pass Date">
 
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
@@ -154,13 +146,13 @@
                     <div class="form-group">
                         <label for="remark">Remark</label>
                         <br>
-                        <textarea cols="50" id="remark" rows="7" placeholder="Enter remark here." class="no-shadow"></textarea>
+                        <textarea cols="50" id="remark" rows="7" name="remark"  placeholder="Enter remark here." class="no-shadow" ng-model="materialDetail.Remark"></textarea>
                     </div>
                 </div>
                 <div class="clear-fix"></div>
 
                     <div class="form-group pull-right">
-                        <button class="button large blue">Next</button>
+                        <button class="button large blue" type="button" ng-disabled="nirform.$invalid" ng-click="$parent.subNav1 = 1">Next</button>
                     </div>
             </div>
             <div ng-show="$parent.subNav1 === 1">
@@ -196,65 +188,79 @@
             <th>
                 Remark
             </th>
+            <th>
+               Action
+            </th>
         </tr>
     </thead>
     <tbody>
-        <tr>
+        <tr ng-repeat="item in itemsArray track by $index">
             <td>
-                1
+                {{$index+1}}
             </td>
             <td>
-                100 GM B
+                {{item.OurName}}
             </td>
             <td>
-                00119
+                {{item.uomID}}
+                
             </td>
             <td>
-                10
+                {{item.DisPer}}
+                
             </td>
             <td>
-                100
+                {{item.AcceptedQty}}
             </td>
             <td>
-                10
+                {{item.rate}}
             </td>
             <td>
-                100000
+                {{item.totalPrice}}
             </td>
             <td>
-                5000
+                {{item.storeStock}}
             </td>
             <td>
-                Place on dry place
+                {{item.remark}}
+            </td>
+
+            <td>
+              <input type="button" value="Remove" ng-click="removeItem($index)" class="button">
+                
             </td>
         </tr>
         <tr>
             <td>
-              2
+              {{itemsArray.length+1}}
             </td>
             <td>
-              <input type="text" class="form-control">
+              <input type="text" class="form-control" id="city" ng-model="newItem.OurName">
             </td>
             <td>
-              <input type="text" class="form-control">
+              <input type="text" class="form-control" ng-model="newItem.uomID">
             </td>
             <td>
-              <input type="text" class="form-control">
+              <input type="text" class="form-control" ng-model="newItem.DisPer">
             </td>
             <td>
-              <input type="text" class="form-control">
+              <input type="text" class="form-control" ng-model="newItem.AcceptedQty">
             </td>
             <td>
-              <input type="text" class="form-control">
+              <input type="text" class="form-control" ng-model="newItem.rate">
             </td>
             <td>
-              533
+              {{getDiscountedPrice(newItem.rate, newItem.AcceptedQty, newItem.DisPer)}}
             </td>
             <td>
-               334
+               {{newItem.storeStock || 120}}
             </td>
             <td>
-              <input type="text" class="form-control">
+              <input type="text" class="form-control" ng-model="newItem.remark">
+              
+            </td>
+            <td>
+              <input type="button" value="Add" ng-disabled="!newItem.OurName || !newItem.uomID || !newItem.DisPer || !newItem.AcceptedQty || !newItem.rate" ng-click="addItem(newItem)" class="button">
               
             </td>
         </tr>
@@ -268,4 +274,5 @@
             </div>
         </form>
     </div>
+</div>
 </div>

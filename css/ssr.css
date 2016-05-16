@@ -2527,3 +2527,7 @@ button[disabled], html input[disabled] {
     color: #fff !important;
         background-image: -webkit-linear-gradient(top, #3690D7, #1F5C9B) !important;
 }
+.disabled-a {
+    opacity: 0.4 !important;
+    pointer-events: none !important;
+}

@@ -6,12 +6,16 @@ angular.module('myApp.services', [])
         authUser : function (data) {
             var UserDetails = {UserDetails: {userName: data.userName, password: data.password}}; 
             return $http.post('WebService.asmx/userLogin', UserDetails);
+        },
+        addNIR : function (data) {
+        	var NIRdata = {Header: data, dtl: {}};
+        	return $http.post('WebService.asmx/saveGRNData', NIRdata);
         } 
     };
     return api;
 }])
 .factory('LSFactory', [function() {
-
+ 
         var LSAPI = {
             clear: function() {
                 return localStorage.clear();
